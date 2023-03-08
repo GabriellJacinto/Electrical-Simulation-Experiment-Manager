@@ -1,0 +1,11 @@
+* Variáveis
+    .param passo    = 0.01n
+    .param t_pulse  = 10n
+    .param dl       = 0.1p
+    .param pmosL    = 32n
+    .param pmosW    = 64n
+    .param nmosL    = 32n
+    .param nmosW    = 64n
+    .param Vin      = 0.9
+    .param load     = 1f
+    .temp 27

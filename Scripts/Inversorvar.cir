@@ -1,0 +1,89 @@
+*INVERSOR
+
+.include 32nm_HPvar.pm
+
+.param tensao= 0.6
+.param wnmos = 70n
+.param wpmos = 140n
+.param len = 32n
+
+*.define gauss(nom, rvar, sig) (nom + (nom*rvar)/sig * sgauss(0))
+.param var = gauss(0.5088, 0.1, 3)
+.param varp = gauss(-0.450, 0.1, 3)
+*.param var = 0.5088
+*.param varp = -0.450
+
+.option post = 2
+.option measform = 3
+
+* Declarando Fontes de tensão
+Vvdd vdd gnd tensao
+
+* Declaração das fontes
+Va a gnd PWL (0n 0 10n 0 10.01n tensao 20n tensao 20.01n 0) 
+
+* Declarando o circuito
+Mp1 vdd a inv vdd PMOS w=wpmos l=len
+Mn1 inv a gnd gnd NMOS w=wnmos l=len
+
+*Capacitância da saída
+Cload inv gnd 1f
+
+* Simulação Transiente de 20ns com passo de 0.1ns
+.tran 0.01n 40n sweep Monte=10
+*DATA = TAB_1
+*.DATA TAB_1 temp tensao len
+
+*T de propagação
+.measure tran tphl trig v(a) val='0.5*tensao' rise=1 targ v(inv) val='0.5*tensao' fall=1
+.measure tran tplh trig v(a) val='0.5*tensao' fall=1 targ v(inv) val='0.5*tensao' rise=1
+
+*Corrente
+.measure tran Iint INTEG i(vvdd) from=0n to=40n
+
+*Temperatura
+.temp -25 0 25 50 75 100 
+
+.print wpmos
+
+.alter
+.param wpmos = 70n
+
+.alter
+.param wnmos = 140n
+
+.alter
+.param wpmos = 210n
+
+.alter
+.param wpmos = 210n
+.param wnmos = 140n
+
+.alter
+.param wpmos = 280n
+
+.alter
+.param wpmos = 280n
+.param wnmos = 140n
+
+.alter
+.param wpmos = 340n
+
+.alter
+.param wpmos = 340n
+.param wnmos = 140n
+
+.alter
+.param wpmos = 340n
+.param wnmos = 210n
+
+.alter
+.param wpmos = 420n
+.param wnmos = 140n
+
+.alter
+.param wpmos = 420n
+.param wnmos = 210n
+
+* Fim do Arquivo SPICE
+.end

@@ -1,0 +1,10 @@
+.temp -25.0 0.0 25.0 50.0 75.0 100.0
+.param load = -25.0
+.param Vin = 0.6
+.param pmosW = 7e-08
+.param nmosW = 7e-08
+.param passo = 0.01n
+.param t_pulse = 10n
+.param dl = 0.1p
+.param pmosL = 3.2e-08
+.param nmosL = 3.2e-08
