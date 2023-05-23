@@ -5,8 +5,6 @@
 ![PyPI](https://img.shields.io/pypi/v/customtkinter)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/customtkinter?color=green&label=downloads)
 ![Downloads](https://static.pepy.tech/personalized-badge/customtkinter?period=total&units=international_system&left_color=grey&right_color=green&left_text=downloads)
-![PyPI - License](https://img.shields.io/pypi/l/customtkinter)
-![](https://tokei.rs/b1/github/tomschimansky/customtkinter)
 ![Mozilla Add-on](https://img.shields.io/amo/dw/teste)
 </div>
 
@@ -38,12 +36,12 @@ This software is on realese 0.1. The current version is capable of:
 <details open>
 <summary>Version 1.1.* Features</summary>
 
-- [x] Execution by command line (see [Installation](#🚀-Installing-SaveIt:-Personal-Video-Logger))
+- [x] Execution by command line (see [Installation](#🚀-Installing))
 - [ ] Update readme instructions.
 - [x] Run Hspice files Manually
-- [ ] Run Spectre files Manually
+- [x] Run Spectre files Manually
 - [x] Manage simulation files and compile in one csv
-- [ ] Run automatically to any type of simulation (either Hspice or Spectre)  
+- [x] Run automatically to any type of simulation (either Hspice or Spectre)  
   
 </details>
 
@@ -52,5 +50,5 @@ This software is on realese 0.1. The current version is capable of:
 
 See [License](LICENSE) for more information.
 
-[⬆ Back to the top](## Electrical-Simulation-Experiment-Manager)<br>
+[⬆ Back to the top](#-Electrical-Simulation-Experiment-Manager)<br>
 

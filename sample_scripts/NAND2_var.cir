@@ -1,6 +1,6 @@
 * Coleta de dados NAND2
-.include 32nm_HPvar.pm
-.include var.cir
+.include lib/32nm_HPvar.pm
+.include configs/config.cir
 
 *.define gauss(nom, rvar, sig) (nom + (nom*rvar)/sig * sgauss(0))
     .param var = gauss(0.5088, 0.1, 3)

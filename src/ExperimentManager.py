@@ -2,9 +2,9 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from threading import Lock
 from datetime import datetime
 from typing import Callable
+from itertools import product
 import logging
 import pandas as pd
-import itertools
 import json
 import time
 import os
@@ -16,8 +16,7 @@ class ExperimentManager:
     __config: dict
     __cases: pd.DataFrame
 
-    def __init__(self, out_dir : str, var: dict, runner: Callable, 
-                 config: dict = {}, resume=False):
+    def __init__(self, args, runner, resume=False):
         """
         Inicializa o gerenciador de experimentos
 
@@ -33,27 +32,30 @@ class ExperimentManager:
         config : TYPE, optional
             Parâmetros fixos para todos os experimentos realizados.
         """
-        self.__out_dir = out_dir
-        self.__var = var
+        self.__out_dir = args.out_dir
+        with open(args.parameters) as json_file:
+            self.__parameters = json.load(json_file)
+        self.__config = self.__parameters["config"]
+        self.__var = self.__parameters["var"]
+        
         self.__runner = runner
-        self.__config = config
         self.lock = Lock()
         
         if not resume:
-            os.makedirs(out_dir)
-            with open(os.path.join(out_dir, "params.json"), "w") as file:
-                json.dump({"var": var, "config": config}, file)
+            os.makedirs(self.__out_dir)
+            with open(os.path.join(self.__out_dir, "parameters.json"), "w") as file:
+                json.dump({"var": self.__var, "config": self.__config}, file)
             
-            products = list(itertools.product(*var.values()))
-            self.__cases = pd.DataFrame(products, columns=var.keys())
-            self.__cases.to_csv(os.path.join(out_dir, "cases.csv"))
+            products = list(product(*self.__var.values()))
+            self.__cases = pd.DataFrame(products, columns=self.__var.keys())
+            self.__cases.to_csv(os.path.join(self.__out_dir, "cases.csv"))
             
-            self.__completed = pd.DataFrame(None, columns=var.keys())
+            self.__completed = pd.DataFrame(None, columns=self.__var.keys())
             self.__completed["time"] = None
-            self.__completed.to_csv(os.path.join(out_dir, "completed.csv"))
+            self.__completed.to_csv(os.path.join(self.__out_dir, "completed.csv"))
         else:
-            self.__cases = pd.read_csv(os.path.join(out_dir, "cases.csv"), index_col=0)
-            self.__completed = pd.read_csv(os.path.join(out_dir, "completed.csv"), index_col=0)
+            self.__cases = pd.read_csv(os.path.join(self.__out_dir, "cases.csv"), index_col=0)
+            self.__completed = pd.read_csv(os.path.join(self.__out_dir, "completed.csv"), index_col=0)
 
     def run(self, max_workers: int = None):
         """
