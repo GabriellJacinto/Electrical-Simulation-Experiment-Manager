@@ -4,7 +4,7 @@ import logging
 def run(out_path: str, inp_file: str, copy: list = [], cmd: str = 'hspice', **kwargs):
     os.mkdir(out_path)
     logging.info("starting " + out_path)
-    create_var_file(out_path, **kwargs)
+    create_config_file(out_path, **kwargs)
     for file_path in copy+[inp_file]:
         file = os.path.join(out_path, os.path.split(file_path)[1])
         os.system('cp "%s" "%s"' %(file_path, file))
@@ -14,8 +14,8 @@ def run(out_path: str, inp_file: str, copy: list = [], cmd: str = 'hspice', **kw
     elif cmd == 'spectre':
         os.system('spectre -outdir "%s" "%s"' %(out_path, file))
 
-def create_var_file(path: str, temp=None, **kwargs):
-    with open(os.path.join(path, "var.cir"), "w") as file:
+def create_config_file(path: str, temp=None, **kwargs):
+    with open(os.path.join(path, "config.cir"), "w") as file:
         if temp != None:
             file.write(".temp")
             if isinstance(temp, list):
