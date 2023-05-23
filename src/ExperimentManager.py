@@ -32,7 +32,7 @@ class ExperimentManager:
         config : TYPE, optional
             Parâmetros fixos para todos os experimentos realizados.
         """
-        self.__out_dir = args.out_dir
+        self.__out_dir = "simResults_" + args.out_dir
         with open(args.parameters) as json_file:
             self.__parameters = json.load(json_file)
         self.__config = self.__parameters["config"]
@@ -56,6 +56,10 @@ class ExperimentManager:
         else:
             self.__cases = pd.read_csv(os.path.join(self.__out_dir, "cases.csv"), index_col=0)
             self.__completed = pd.read_csv(os.path.join(self.__out_dir, "completed.csv"), index_col=0)
+
+    @property
+    def out_dir(self):
+        return self.__out_dir
 
     def run(self, max_workers: int = None):
         """
