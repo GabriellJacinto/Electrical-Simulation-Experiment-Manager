@@ -14,4 +14,4 @@ if __name__ == "__main__":
     experiment = ExperimentManager(args, HspiceRunner.run)
     experiment.run(max_workers=6)
 
-    #CSVmanager.join_all(experiment.out_dir) 
+    CSVmanager.join_all(experiment.out_dir) 

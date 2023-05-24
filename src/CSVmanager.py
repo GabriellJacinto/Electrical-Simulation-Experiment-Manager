@@ -32,4 +32,5 @@ class CSVmanager():
         return (mc.rename(rename, axis=1), file.split('.')[0])
         
 if __name__ == '__main__':
-    CSVmanager.join_all("NAND2_40") 
+    dir = input("dir = ")
+    CSVmanager.join_all(dir) 
