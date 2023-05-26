@@ -18,7 +18,7 @@ class CSVmanager():
                     data = pd.read_csv(os.path.join(cur_dir, f), index_col=0, skiprows=4)
                     data = data.drop(columns=data.columns[-1])
                     dfs.append(pd.concat([mc, data], axis=1))
-        pd.concat(dfs, ignore_index=True).to_csv(os.path.join(directory, "results", "all.csv"))
+        pd.concat(dfs, ignore_index=True).to_csv("all_results.csv")
     
     @staticmethod
     def load_mc(directory):
@@ -32,4 +32,5 @@ class CSVmanager():
         return (mc.rename(rename, axis=1), file.split('.')[0])
         
 if __name__ == '__main__':
-    CSVmanager.join_all("NAND2_40") 
+    dir = input("dir = ")
+    CSVmanager.join_all(dir) 
