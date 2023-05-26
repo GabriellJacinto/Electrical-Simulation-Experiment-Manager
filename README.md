@@ -57,4 +57,3 @@ This software is on realese 0.1. The current version is capable of:
 See [License](LICENSE) for more information.
 
 [⬆ Back to the top](#-Electrical-Simulation-Experiment-Manager)<br>
-
