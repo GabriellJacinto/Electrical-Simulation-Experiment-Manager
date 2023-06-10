@@ -13,5 +13,8 @@ if __name__ == "__main__":
 
     experiment = ExperimentManager(args, HspiceRunner.run)
     experiment.run(max_workers=6)
-
-    CSVmanager.join_all(experiment.out_dir) 
+    
+    if experiment.command == "hspice": 
+        CSVmanager.join_all_hspice(experiment.out_dir)
+    elif experiment.command == "spectre":
+        CSVmanager.join_all(experiment.out_dir)

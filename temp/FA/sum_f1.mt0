@@ -1,0 +1,19 @@
+$ Simulator: spectre (ver. 15.1.0.679.isr14)
+.title '*****************************************'
+tp_lh_cin_0_0 tp_hl_cin_0_0 tp_hl_cin_0_1 tp_lh_cin_0_1 tp_hl_cin_1_0 
+tp_lh_cin_1_0 tp_lh_cin_1_1 tp_hl_cin_1_1 tp_lh_0_a_0 tp_hl_0_a_0 tp_hl_0_a_1 
+tp_lh_0_a_1 tp_hl_1_a_0 tp_lh_1_a_0 tp_lh_1_a_1 tp_hl_1_a_1 tp_lh_0_0_b 
+tp_hl_0_0_b tp_hl_0_1_b tp_lh_0_1_b tp_hl_1_0_b tp_lh_1_0_b tp_lh_1_1_b 
+tp_hl_1_1_b iint_vvccin iint_vvcc iint_vvccbloco iint_vvccout 
+potencia_media_vccin potencia_media_vcc potencia_media_vccbloco 
+potencia_media_vccout potencia_max_vccin potencia_max_vcc potencia_max_vccbloco 
+potencia_max_vccout potencia_min_vccin potencia_min_vcc potencia_min_vccbloco 
+potencia_min_vccout temper alter# 
+1.30317e-11 1.8806e-11 2.18267e-11 2.23976e-11 2.13914e-11 2.21823e-11 
+1.71633e-11 1.36763e-11 1.46456e-11 1.93519e-11 2.19093e-11 2.35678e-11 
+2.22431e-11 2.32106e-11 1.70262e-11 1.59815e-11 1.34506e-11 1.87142e-11 
+2.26054e-11 2.37416e-11 2.28804e-11 2.37344e-11 1.79831e-11 1.43312e-11 
+-3.52852e-15 -4.95888e-15 -1.92657e-14 -3.40409e-15 -1.71525e-08 -2.41057e-08 
+-9.36525e-08 -1.65477e-08 3.90534e-06 6.15557e-06 1.85496e-05 1.76506e-05 
+-2.57926e-05 -2.71419e-05 -2.88026e-05 -2.36669e-05 27 1 
+

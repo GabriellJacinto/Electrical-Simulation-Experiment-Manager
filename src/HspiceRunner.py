@@ -4,7 +4,7 @@ import logging
 def run(out_path: str, inp_file: str, copy: list = [], cmd: str = 'hspice', **kwargs):
     os.mkdir(out_path)
     logging.info("starting " + out_path)
-    create_config_file(out_path, **kwargs)
+    create_config_file(out_path, cmd, **kwargs)
     for file_path in copy+[inp_file]:
         file = os.path.join(out_path, os.path.split(file_path)[1])
         os.system('cp "%s" "%s"' %(file_path, file))
@@ -15,6 +15,7 @@ def run(out_path: str, inp_file: str, copy: list = [], cmd: str = 'hspice', **kw
         os.system('spectre -outdir "%s" "%s"' %(out_path, file))
 
 def create_config_file(path: str, temp=None, **kwargs):
+    kwargs
     with open(os.path.join(path, "config.cir"), "w") as file:
         if temp != None:
             file.write(".temp")
@@ -24,9 +25,13 @@ def create_config_file(path: str, temp=None, **kwargs):
             else:
                 file.write(" %s" %(str(temp)))
             file.write("\n")
-    
-        for variable, value in kwargs.items():
-            file.write(".param %s = %s\n" %(variable, str(value)))
+        if kwargs["cmd"] == "spectre":
+            file.write("simulator lang=spectre")
+            for variable, value in kwargs.items():
+                file.write("parameters %s = %s\n" %(variable, str(value)))
+        elif kwargs["cmd"] == "hspice":
+            for variable, value in kwargs.items():
+                file.write(".param %s = %s\n" %(variable, str(value)))
         
 if __name__ == '__main__':
     os.mkdir("test")

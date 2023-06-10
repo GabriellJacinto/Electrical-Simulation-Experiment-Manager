@@ -61,6 +61,10 @@ class ExperimentManager:
     def out_dir(self):
         return self.__out_dir
 
+    @property
+    def command(self):
+        return self.__config["cmd"]
+
     def run(self, max_workers: int = None):
         """
         Roda os experimentos em parelelo

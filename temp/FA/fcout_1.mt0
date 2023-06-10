@@ -1,0 +1,15 @@
+$ Simulator: spectre (ver. 15.1.0.679.isr14)
+.title '*****************************************'
+tp_lh_cin_0_1 tp_hl_cin_0_1 tp_lh_cin_1_0 tp_hl_cin_1_0 tp_lh_0_a_1 tp_hl_0_a_1 
+tp_lh_1_a_0 tp_hl_1_a_0 tp_lh_0_1_b tp_hl_0_1_b tp_lh_1_0_b tp_hl_1_0_b 
+iint_vvccin iint_vvcc iint_vvccbloco iint_vvccout potencia_media_vccin 
+potencia_media_vcc potencia_media_vccbloco potencia_media_vccout 
+potencia_max_vccin potencia_max_vcc potencia_max_vccbloco potencia_max_vccout 
+potencia_min_vccin potencia_min_vcc potencia_min_vccbloco potencia_min_vccout 
+temper alter# 
+1.49776e-11 1.63505e-11 1.53139e-11 1.59434e-11 1.59977e-11 1.72354e-11 
+1.58962e-11 1.72709e-11 1.69214e-11 1.67976e-11 1.55386e-11 1.80101e-11 
+-2.22792e-15 -2.25772e-15 -9.63587e-15 -1.73496e-15 -2.16604e-08 -2.19501e-08 
+-9.36821e-08 -1.68677e-08 3.85072e-06 6.15137e-06 1.8528e-05 1.68298e-05 
+-2.58288e-05 -2.71318e-05 -2.88486e-05 -2.29376e-05 27 1 
+
