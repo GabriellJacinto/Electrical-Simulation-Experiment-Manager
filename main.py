@@ -2,7 +2,7 @@ import argparse
 
 from src.ExperimentManager import ExperimentManager
 from src.CSVmanager import CSVmanager
-import SpiceRunner
+import src.SpiceRunner as SpiceRunner
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Spice Simulation Manager")
