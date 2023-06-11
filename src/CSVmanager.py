@@ -58,7 +58,7 @@ class CSVmanager():
                     grouped_data = [raw_data[i:i+m] for i in range(0, len(raw_data), m)] 
                     data = pd.DataFrame(grouped_data, columns=headers)
                     dfs.append(pd.concat([mc, data], axis=1))
-        pd.concat(dfs, ignore_index=True).to_csv(os.path.join(directory,"all_results2.csv"))
+        pd.concat(dfs, ignore_index=True).to_csv(os.path.join(directory,"all_results_{}.csv".format(input_file_name)))
 
     @staticmethod
     def load_results_files_spectre(directory):
