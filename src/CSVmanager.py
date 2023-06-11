@@ -36,7 +36,7 @@ class CSVmanager():
         cases = pd.read_csv(os.path.join(directory, "cases.csv"), index_col=0)
         dfs = []
         for i in cases.index:
-            process_dir = os.path.join(directory, "results", str(i), "{}.rawr".format(input_file_name)) #essa solução é bem mais ou menos, ela necessita que as pastas dentro de results tenham esse pk inteiro
+            process_dir = os.path.join(directory, "results", str(i), "{}.raw".format(input_file_name)) #essa solução é bem mais ou menos, ela necessita que as pastas dentro de results tenham esse pk inteiro
             results_dir = os.path.join(directory, "results", str(i)) 
 
             mc = CSVmanager.load_results_files_spectre(process_dir)
