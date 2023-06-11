@@ -13,8 +13,8 @@
         "pmosL": "4e-08", 
         "nmosL": "4e-08", 
         "temp": [-25.0, 0.0, 25.0], 
-        "inp_file": "sample_scripts/NAND2_var.cir", 
-        "copy": ["sample_scripts/lib/32nm_HPvar.pm"],
+        "inp_file": "hspice_sample_scripts/NAND2_var.cir", 
+        "copy": ["hspice_sample_scripts/lib/32nm_HPvar.pm"],
         "cmd": "hspice"
     }
 }
