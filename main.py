@@ -18,4 +18,4 @@ if __name__ == "__main__":
     if experiment.command == "hspice": 
         CSVmanager.join_all_hspice(experiment.out_dir)
     elif experiment.command == "spectre":
-        CSVmanager.join_all_spctre(experiment.out_dir, experiment.input_file_name)
+        CSVmanager.join_all_spectre(experiment.out_dir, experiment.input_file_name)

@@ -32,17 +32,18 @@ class CSVmanager():
         return (mc.rename(rename, axis=1), file.split('.')[0])
     
     @staticmethod
-    def join_all_spctre(directory, input_file_name):
+    def join_all_spectre(directory, input_file_name):
         cases = pd.read_csv(os.path.join(directory, "cases.csv"), index_col=0)
         dfs = []
+        file_name = input_file_name.split(".")[0]
         for i in cases.index:
-            process_dir = os.path.join(directory, "results", str(i), "{}.raw".format(input_file_name)) #essa solução é bem mais ou menos, ela necessita que as pastas dentro de results tenham esse pk inteiro
+            process_dir = os.path.join(directory, "results", str(i), "{}.raw".format(file_name)) #essa solução é bem mais ou menos, ela necessita que as pastas dentro de results tenham esse pk inteiro
             results_dir = os.path.join(directory, "results", str(i)) 
 
             mc = CSVmanager.load_results_files_spectre(process_dir)
             for col in cases.columns:
                 mc[col] = cases[col].loc[i]
-            prefix = "{}.mt".format(input_file_name)
+            prefix = "{}.mt".format(file_name)
             for f in os.listdir(results_dir):
                 if f.startswith(prefix):
                     with open(os.path.join(results_dir, f), 'r') as file:
@@ -58,7 +59,7 @@ class CSVmanager():
                     grouped_data = [raw_data[i:i+m] for i in range(0, len(raw_data), m)] 
                     data = pd.DataFrame(grouped_data, columns=headers)
                     dfs.append(pd.concat([mc, data], axis=1))
-        pd.concat(dfs, ignore_index=True).to_csv(os.path.join(directory,"all_results_{}.csv".format(input_file_name)))
+        pd.concat(dfs, ignore_index=True).to_csv(os.path.join(directory,"all_results_{}.csv".format(file_name)))
 
     @staticmethod
     def load_results_files_spectre(directory):
@@ -84,4 +85,4 @@ if __name__ == '__main__':
         CSVmanager.join_all_hspice(dir)
     elif sim_type == "spectre":
         file_name = input("What's the name of the simulation script? ")
-        CSVmanager.join_all_spctre(dir, file_name)
+        CSVmanager.join_all_spectre(dir, file_name)
